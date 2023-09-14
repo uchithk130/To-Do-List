@@ -1,0 +1,35 @@
+<!-- JavaScript -->
+</div>
+</div>
+<div>
+    <h5 style="text-align: center;">&copy;Uchithkumar</h5>
+</div>
+</div>
+<script>
+    // JavaScript to handle button click events
+
+    // Get references to HTML elements
+    const addButton = document.getElementById("add-button");
+    const formContainer = document.getElementById("form-container");
+    const cancel = document.getElementById("cancel-button");
+
+    // Add a click event listener to the "ADD" button
+    addButton.addEventListener("click", () => {
+        // Show the form container and hide the "ADD" button
+        formContainer.style.display = "block";
+        addButton.style.display = "none";
+    });
+
+    // Add a click event listener to the "Cancel" button
+    cancel.addEventListener("click", () => {
+        // Hide the form container and show the "ADD" button
+        formContainer.style.display = "none";
+        addButton.style.display = "block";
+    });
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+</html>

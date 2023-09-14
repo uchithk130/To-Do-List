@@ -1,0 +1,60 @@
+<%- include("header") %>
+<!-- Modal -->
+<div class="modal modal-sheet d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalTour">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-body">
+                <img src="<%= listtitle %>.png" style="width: 100px; display: inline-block;">
+                <h2 class="fw-bold mb-0 " style="display: inline-block; text-align: center;">
+                    <%= listtitle %>
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-4 shadow">
+            <div class="modal-body p-5">
+                <h2 class="fw-bold mb-4">
+                    <!-- Conditional color for the day -->
+                    <% if(typeOfDay==="Saturday"||typeOfDay==="Sunday"){ %>
+                        <label style="color: burlywood;"><%= typeOfDay %></label>
+                    <% } else{ %>
+                        <label style="color: #282c34;"><%= typeOfDay %></label>
+                    <% } %>
+                </h2>
+
+                <ul class="d-grid gap-2 my-2 list-unstyled small">
+                    <!-- Loop through items -->
+                    <% for(var i=0;i<items.length;i++){ %>
+                        <li class="d-flex gap-2" >
+                            <svg class="bi text-body-secondary flex-shrink-0" width="48" height="48"><use xlink:href="#grid-fill"/></svg>
+                            <div>
+                                <form action="/delete" method="post">
+                                <input type="checkbox" style="display: inline-block;margin-right: 10px; cursor: pointer;" name ="item" value="<%= items[i] %>" onchange="this.form.submit()">
+                                <input type="hidden" name="listtitle" value="<%= listtitle %>" >
+                                <h5 class="mb-0" style="display: inline-block;"><%= items[i] %></h5>
+                                </form>
+                            </div>
+                        </li>
+                    <% } %>
+                </ul>
+
+                <!-- Add Button -->
+                <button type="button" class="btn btn-lg btn-primary w-100" data-bs-dismiss="modal" id="add-button">ADD</button>
+
+                <!-- Form Container -->
+                <div id="form-container" >
+                    <form action="/" method="post">
+                        <input type="text" name="item" placeholder="Enter Task" style="display:block; word-wrap: normal;" class="w-100 h-120 rounded" required>
+                        <!-- Pass the list title as a value when submitting the form -->
+                        <button type="submit" class="btn btn-lg btn-primary mt-3 w-50%" data-bs-dismiss="modal" name="list" value="<%= listtitle %>">Submit</button>
+
+                        <button type="button" class="btn btn-lg btn-primary mt-3 w-50%" data-bs-dismiss="modal" id="cancel-button">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("footer") %>
